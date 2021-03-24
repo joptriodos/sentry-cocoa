@@ -191,7 +191,7 @@ NS_SWIFT_NAME(Options)
 /**
  * Set as delegate on the NSURLSession used for all network data-transfer tasks performed by Sentry.
  */
-@property (nonatomic, nullable, weak) id<NSURLSessionDelegate> urlSessionDelegate;
+@property (nullable, nonatomic, weak) id<NSURLSessionDelegate> urlSessionDelegate;
 
 @end
 
