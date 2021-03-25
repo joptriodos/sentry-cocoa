@@ -1,18 +1,28 @@
 import Sentry
 import UIKit
 
+class FakeDelegateSwift: NSObject, URLSessionDelegate {
+
+    func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+        print("HATSEE 5!")
+    }
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+
+    let fakeDelegate = FakeDelegateSwift()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         SentrySDK.start { options in
-            options.dsn = "https://a92d50327ac74b8b9aa4ea80eccfb267@o447951.ingest.sentry.io/5428557"
+            options.dsn = "https://4a0f226d3bfb4a15867ddd1e36f0d4c0@o529868.ingest.sentry.io/5648995"
             options.beforeSend = { event in
                 return event
             }
             options.debug = true
             options.sessionTrackingIntervalMillis = 5_000
+            options.urlSessionDelegate = self.fakeDelegate
         }
         
         return true
