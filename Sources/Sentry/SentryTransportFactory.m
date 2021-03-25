@@ -26,10 +26,10 @@ SentryTransportFactory ()
                    sentryFileManager:(SentryFileManager *)sentryFileManager
 {
     NSURLSessionConfiguration *configuration =
-        [NSURLSessionConfiguration ephemeralSessionConfiguration];
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
+    [NSURLSessionConfiguration ephemeralSessionConfiguration];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:options.urlSessionDelegate delegateQueue:nil];
     id<SentryRequestManager> requestManager =
-        [[SentryQueueableRequestManager alloc] initWithSession:session];
+    [[SentryQueueableRequestManager alloc] initWithSession:session];
 
     SentryHttpDateParser *httpDateParser = [[SentryHttpDateParser alloc] init];
     SentryRetryAfterHeaderParser *retryAfterHeaderParser =
