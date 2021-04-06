@@ -162,6 +162,10 @@
     if (nil != options[@"sendDefaultPii"]) {
         self.sendDefaultPii = [options[@"sendDefaultPii"] boolValue];
     }
+
+    if ([options[@"urlSessionDelegate"] conformsToProtocol: @protocol(NSURLSessionDelegate)]) {
+        self.urlSessionDelegate = options[@"urlSessionDelegate"];
+    }
 }
 
 @end
